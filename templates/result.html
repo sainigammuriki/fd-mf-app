@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Result</title>
+
+<style>
+body {
+    font-family: 'Segoe UI';
+    background: #F5F7FA;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    margin: 60px auto;
+    padding: 30px;
+    width: 60%;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.highlight {
+    color: green;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.time {
+    color: #2FA4A9;
+}
+
+.speed {
+    color: purple;
+    font-weight: bold;
+}
+
+button {
+    background: #2FA4A9;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 style="color:red;">FD vs Mutual Funds — The Real Difference</h2>
+
+<p>FD Value: ₹{{fd}}</p>
+<p>Recommended Fund: {{fund}} ({{mf_rate}}%)</p>
+<p>MF Value: ₹{{mf}}</p>
+
+<p class="highlight">+₹{{gain}} extra returns 🎉</p>
+
+{% if years_saved == 0 and months_saved == 0 %}
+<p class="time">Time difference is minimal ⏳</p>
+{% else %}
+<p class="time">
+Reach your goal {{years_saved}} years {{months_saved}} months faster ⏳
+</p>
+{% endif %}
+
+<p class="speed">
+🚀 {{speed_factor}}x faster wealth growth
+</p>
+
+<br>
+
+<img src="/{{chart}}" width="450">
+
+<hr>
+
+<h3>Start investing smarter today 🚀</h3>
+
+<a href="{{whatsapp_url}}">
+<button>Talk to Advisor 💬</button>
+</a>
+
+<p style="font-size:12px;color:gray;">
+*Returns are based on historical averages and may vary.
+</p>
+
+</div>
+
+</body>
+</html>
