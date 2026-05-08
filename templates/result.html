@@ -1,91 +1,411 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <title>Result</title>
 
 <style>
-body {
-    font-family: 'Segoe UI';
-    background: #F5F7FA;
-    text-align: center;
+
+body{
+    font-family:'Segoe UI';
+    background:#F5F7FA;
+    margin:0;
+    color:#334155;
 }
 
-.container {
-    background: white;
-    margin: 60px auto;
-    padding: 30px;
-    width: 60%;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+/* HEADER */
+
+.header{
+    background:white;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 5px rgba(0,0,0,0.05);
 }
 
-.highlight {
-    color: green;
-    font-size: 24px;
-    font-weight: bold;
+.logo{
+    height:45px;
 }
 
-.time {
-    color: #2FA4A9;
+.nav a{
+    margin:0 15px;
+    text-decoration:none;
+    color:#334155;
+    font-weight:500;
+    font-size:16px;
 }
 
-.speed {
-    color: purple;
-    font-weight: bold;
+.nav a:hover{
+    color:#2FA4A9;
 }
 
-button {
-    background: #2FA4A9;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
+/* TITLE */
+
+.main-title{
+    text-align:center;
+    margin-top:40px;
+    color:#ef4444;
+    font-size:38px;
 }
+
+/* CARDS */
+
+.card{
+    background:white;
+    width:80%;
+    margin:30px auto;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* COMPARISON */
+
+.comparison{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.box{
+    width:250px;
+    text-align:center;
+    padding:20px;
+}
+
+.box img{
+    width:80px;
+    margin-bottom:10px;
+}
+
+.box h2{
+    margin:10px 0;
+    color:#1E3A5F;
+}
+
+/* COLORS */
+
+.green{
+    color:#22c55e;
+    font-weight:bold;
+}
+
+.purple{
+    color:#7c3aed;
+    font-weight:bold;
+}
+
+.blue{
+    color:#2FA4A9;
+    font-weight:bold;
+}
+
+/* GRAPH */
+
+.chart{
+    text-align:center;
+    margin-top:30px;
+}
+
+.chart img{
+    width:75%;
+    border-radius:15px;
+}
+
+/* FEATURES */
+
+.features{
+    line-height:2;
+    font-size:18px;
+}
+
+/* BUTTONS */
+
+button{
+    background:#2FA4A9;
+    color:white;
+    padding:14px 25px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#248b8f;
+}
+
+.center{
+    text-align:center;
+}
+
+/* CONTACT */
+
+.contact-section{
+    background:white;
+    padding:40px;
+    text-align:center;
+    margin-top:40px;
+}
+
+.social-links a{
+    margin:0 10px;
+    text-decoration:none;
+    color:#2FA4A9;
+    font-weight:bold;
+}
+
+.social-links a:hover{
+    color:#7c3aed;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div class="container">
+<!-- HEADER -->
 
-<h2 style="color:red;">FD vs Mutual Funds — The Real Difference</h2>
+<div class="header">
 
-<p>FD Value: ₹{{fd}}</p>
-<p>Recommended Fund: {{fund}} ({{mf_rate}}%)</p>
-<p>MF Value: ₹{{mf}}</p>
+    <img src="/static/logo.png" class="logo">
 
-<p class="highlight">+₹{{gain}} extra returns 🎉</p>
+    <div class="nav">
 
-{% if years_saved == 0 and months_saved == 0 %}
-<p class="time">Time difference is minimal ⏳</p>
-{% else %}
-<p class="time">
-Reach your goal {{years_saved}} years {{months_saved}} months faster ⏳
+        <a href="https://sagefarm.in">
+            Home
+        </a>
+
+        <a href="https://sagefarm.in/about/">
+            About
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </div>
+
+</div>
+
+<!-- TITLE -->
+
+<h1 class="main-title">
+    FD vs Mutual Funds — The Real Difference
+</h1>
+
+<!-- COMPARISON SECTION -->
+
+<div class="card">
+
+<div class="comparison">
+
+    <!-- FD -->
+
+    <div class="box">
+
+        <img src="/static/fd.png">
+
+        <h2>FD</h2>
+
+        <p style="font-size:28px;font-weight:bold;">
+            ₹{{fd}}
+        </p>
+
+    </div>
+
+    <!-- MF -->
+
+    <div class="box">
+
+        <img src="/static/mf.png">
+
+        <h2>Mutual Fund</h2>
+
+        <p style="font-size:28px;font-weight:bold;">
+            ₹{{mf}}
+        </p>
+
+        <p class="green" style="font-size:24px;">
+            +₹{{mf_gain}}
+        </p>
+
+    </div>
+
+    <!-- SAGEFARM -->
+
+    <div class="box">
+
+        <img src="/static/logo.png">
+
+        <h2>Sagefarm</h2>
+
+        <p style="font-size:28px;font-weight:bold;">
+            ₹{{sagefarm}}
+        </p>
+
+        <p class="purple" style="font-size:24px;">
+            +₹{{sage_gain}}
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- GRAPH -->
+
+<div class="card center">
+
+<h2 style="color:#1E3A5F;font-size:38px;">
+    📊 Investment Comparison
+</h2>
+
+<div class="chart">
+
+    <img src="/{{chart}}">
+
+</div>
+
+</div>
+
+<!-- TIME ADVANTAGE -->
+
+<div class="card center">
+
+<h2 style="color:#1E3A5F;">
+    ⏳ Time Advantage
+</h2>
+
+<p class="blue" style="font-size:24px;">
+
+    Mutual Funds reach your target
+
+    {{years_saved}} years
+
+    {{months_saved}} months earlier
+
 </p>
-{% endif %}
 
-<p class="speed">
-🚀 {{speed_factor}}x faster wealth growth
-</p>
+<p class="purple" style="font-size:24px;">
 
-<br>
+    Sagefarm reaches your target
 
-<img src="/{{chart}}" width="450">
+    {{sage_years_saved}} years
 
-<hr>
+    {{sage_months_saved}} months earlier
 
-<h3>Start investing smarter today 🚀</h3>
-
-<a href="{{whatsapp_url}}">
-<button>Talk to Advisor 💬</button>
-</a>
-
-<p style="font-size:12px;color:gray;">
-*Returns are based on historical averages and may vary.
 </p>
 
 </div>
 
+<!-- SPEED -->
+
+<div class="card center">
+
+<h2 style="color:#1E3A5F;">
+    🚀 Wealth Growth Speed
+</h2>
+
+<p class="blue" style="font-size:24px;">
+
+    Mutual Funds:
+
+    {{speed_factor}}x faster vs FD
+
+</p>
+
+<p class="purple" style="font-size:24px;">
+
+    Sagefarm:
+
+    {{sage_speed}}x faster vs FD
+
+</p>
+
+</div>
+
+<!-- WHY SAGEFARM -->
+
+<div class="card">
+
+<h2 class="center" style="color:#1E3A5F;">
+    💡 Why Sagefarm?
+</h2>
+
+<div class="features center">
+
+    <p>✔ Long-term strategy (10–20 years)</p>
+
+    <p>✔ Optimized portfolio allocation</p>
+
+    <p>✔ Wealth creation focused</p>
+
+    <p>✔ Higher compounding potential</p>
+
+    <p>✔ Personalized investment guidance</p>
+
+</div>
+
+</div>
+
+<!-- BUTTONS -->
+
+<div class="center" style="margin-bottom:50px;">
+
+<a href="{{whatsapp_url}}">
+
+    <button>
+        Talk to Advisor 💬
+    </button>
+
+</a>
+
+<br><br>
+
+<a href="/">
+
+    <button>
+        Back to Home
+    </button>
+
+</a>
+
+</div>
+
+<!-- CONTACT -->
+
+<div id="contact" class="contact-section">
+
+    <h2>Contact Sagefarm</h2>
+
+    <p>📞 8433726774</p>
+
+    <p>📧 invest@sagefarm.in</p>
+
+    <p>AMFI Registered Mutual Fund Distributor</p>
+
+    <div class="social-links">
+
+        <a href="https://www.instagram.com/sagefarm.in/" target="_blank">
+            Instagram
+        </a>
+
+        |
+
+        <a href="https://www.linkedin.com/company/sagefarm/" target="_blank">
+            LinkedIn
+        </a>
+
+    </div>
+
+</div>
+
 </body>
+
 </html>
