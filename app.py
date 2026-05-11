@@ -128,7 +128,7 @@ def result():
 
     values = [fd_value, mf_value, sagefarm_value]
 
-    colors = ['#ef4444', '#2FA4A9', '#7c3aed']
+    colors = ['#ef4444', '#111111', '#2FA4A9']
 
     plt.figure(figsize=(10, 6))
 
